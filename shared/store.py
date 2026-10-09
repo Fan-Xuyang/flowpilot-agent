@@ -2,6 +2,7 @@ import json
 import sqlite3
 import time
 import uuid
+from contextlib import contextmanager
 from pathlib import Path
 
 
@@ -17,11 +18,16 @@ class Store:
                 CREATE TABLE IF NOT EXISTS receipts(task_id TEXT PRIMARY KEY, payload TEXT, receipt TEXT);
             """)
 
+    @contextmanager
     def connect(self):
         c = sqlite3.connect(self.path, timeout=10)
         c.row_factory = sqlite3.Row
-        c.execute("PRAGMA journal_mode=WAL")
-        return c
+        try:
+            c.execute("PRAGMA journal_mode=WAL")
+            with c:
+                yield c
+        finally:
+            c.close()
 
     def create(self, kind, query, mode, state):
         tid = uuid.uuid4().hex

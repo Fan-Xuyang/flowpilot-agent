@@ -1,0 +1,588 @@
+{
+  "scope": "本地合成门户/数据集的真实 HTTP 工具流程；无模型。重启计时包含服务启动，人工确认由测试发出，不代表真人等待时间。",
+  "model": "none",
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "completed": 12,
+  "total": 12,
+  "checks_passed": 125,
+  "checks_total": 125,
+  "p50_ms": 4525.86,
+  "p95_ms": 6918.13,
+  "cases": [
+    {
+      "id": "B001",
+      "route": "page-tool",
+      "completed": true,
+      "elapsed_ms": 15505.65
+    },
+    {
+      "id": "B009",
+      "route": "semantic-dom",
+      "completed": true,
+      "elapsed_ms": 4965.74
+    },
+    {
+      "id": "B017",
+      "route": "page-tool",
+      "completed": true,
+      "elapsed_ms": 4498.26
+    },
+    {
+      "id": "B025",
+      "route": "semantic-dom",
+      "completed": true,
+      "elapsed_ms": 5431.32
+    },
+    {
+      "id": "B033",
+      "route": "page-tool",
+      "completed": true,
+      "elapsed_ms": 6918.13
+    },
+    {
+      "id": "B041",
+      "route": "semantic-dom",
+      "completed": true,
+      "elapsed_ms": 5598.59
+    },
+    {
+      "id": "B049",
+      "route": "page-tool",
+      "completed": true,
+      "elapsed_ms": 4313.59
+    },
+    {
+      "id": "B057",
+      "route": "semantic-dom",
+      "completed": true,
+      "elapsed_ms": 4518.87
+    },
+    {
+      "id": "B065",
+      "route": "page-tool",
+      "completed": true,
+      "elapsed_ms": 4183.38
+    },
+    {
+      "id": "B073",
+      "route": "semantic-dom",
+      "completed": true,
+      "elapsed_ms": 4321.86
+    },
+    {
+      "id": "B081",
+      "route": "page-tool",
+      "completed": true,
+      "elapsed_ms": 4532.85
+    },
+    {
+      "id": "B089",
+      "route": "semantic-dom",
+      "completed": true,
+      "elapsed_ms": 4317.09
+    }
+  ],
+  "checks": [
+    {
+      "name": "approval_checkpoint_B001",
+      "passed": true
+    },
+    {
+      "name": "field_values_B001",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B001",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B001",
+      "passed": true
+    },
+    {
+      "name": "restart_preserves_pending_approval",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B001",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B001",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B001",
+      "passed": true
+    },
+    {
+      "name": "startup_marks_inflight_interrupted",
+      "passed": true
+    },
+    {
+      "name": "receipt_reused_after_crash_window",
+      "passed": true
+    },
+    {
+      "name": "idempotence_event_recorded",
+      "passed": true
+    },
+    {
+      "name": "completed_B001",
+      "passed": true
+    },
+    {
+      "name": "report_export_B001",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B001",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B009",
+      "passed": true
+    },
+    {
+      "name": "field_values_B009",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B009",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B009",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B009",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B009",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B009",
+      "passed": true
+    },
+    {
+      "name": "completed_B009",
+      "passed": true
+    },
+    {
+      "name": "report_export_B009",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B009",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B017",
+      "passed": true
+    },
+    {
+      "name": "field_values_B017",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B017",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B017",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B017",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B017",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B017",
+      "passed": true
+    },
+    {
+      "name": "completed_B017",
+      "passed": true
+    },
+    {
+      "name": "report_export_B017",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B017",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B025",
+      "passed": true
+    },
+    {
+      "name": "field_values_B025",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B025",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B025",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B025",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B025",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B025",
+      "passed": true
+    },
+    {
+      "name": "completed_B025",
+      "passed": true
+    },
+    {
+      "name": "report_export_B025",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B025",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B033",
+      "passed": true
+    },
+    {
+      "name": "field_values_B033",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B033",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B033",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B033",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B033",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B033",
+      "passed": true
+    },
+    {
+      "name": "completed_B033",
+      "passed": true
+    },
+    {
+      "name": "report_export_B033",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B033",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B041",
+      "passed": true
+    },
+    {
+      "name": "field_values_B041",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B041",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B041",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B041",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B041",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B041",
+      "passed": true
+    },
+    {
+      "name": "completed_B041",
+      "passed": true
+    },
+    {
+      "name": "report_export_B041",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B041",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B049",
+      "passed": true
+    },
+    {
+      "name": "field_values_B049",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B049",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B049",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B049",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B049",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B049",
+      "passed": true
+    },
+    {
+      "name": "completed_B049",
+      "passed": true
+    },
+    {
+      "name": "report_export_B049",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B049",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B057",
+      "passed": true
+    },
+    {
+      "name": "field_values_B057",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B057",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B057",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B057",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B057",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B057",
+      "passed": true
+    },
+    {
+      "name": "completed_B057",
+      "passed": true
+    },
+    {
+      "name": "report_export_B057",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B057",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B065",
+      "passed": true
+    },
+    {
+      "name": "field_values_B065",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B065",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B065",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B065",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B065",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B065",
+      "passed": true
+    },
+    {
+      "name": "completed_B065",
+      "passed": true
+    },
+    {
+      "name": "report_export_B065",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B065",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B073",
+      "passed": true
+    },
+    {
+      "name": "field_values_B073",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B073",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B073",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B073",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B073",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B073",
+      "passed": true
+    },
+    {
+      "name": "completed_B073",
+      "passed": true
+    },
+    {
+      "name": "report_export_B073",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B073",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B081",
+      "passed": true
+    },
+    {
+      "name": "field_values_B081",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B081",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B081",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B081",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B081",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B081",
+      "passed": true
+    },
+    {
+      "name": "completed_B081",
+      "passed": true
+    },
+    {
+      "name": "report_export_B081",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B081",
+      "passed": true
+    },
+    {
+      "name": "approval_checkpoint_B089",
+      "passed": true
+    },
+    {
+      "name": "field_values_B089",
+      "passed": true
+    },
+    {
+      "name": "unapproved_submission_B089",
+      "passed": true
+    },
+    {
+      "name": "wrong_digest_B089",
+      "passed": true
+    },
+    {
+      "name": "receipt_values_B089",
+      "passed": true
+    },
+    {
+      "name": "duplicate_submission_B089",
+      "passed": true
+    },
+    {
+      "name": "duplicate_confirmation_B089",
+      "passed": true
+    },
+    {
+      "name": "completed_B089",
+      "passed": true
+    },
+    {
+      "name": "report_export_B089",
+      "passed": true
+    },
+    {
+      "name": "sse_cursor_B089",
+      "passed": true
+    },
+    {
+      "name": "missing_fields_not_submitted",
+      "passed": true
+    }
+  ]
+}

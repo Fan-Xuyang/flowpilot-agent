@@ -105,7 +105,7 @@ def test_portal_only_accepts_confirmed_payload(tmp_path, monkeypatch):
     module = importlib.import_module("portal_app.main")
     from portal_app.agent import demo_plan, digest
 
-    payload = demo_plan("采购 2 台电脑，预算 12000").payload.model_dump()
+    payload = demo_plan("信息技术部采购 2 台电脑，预算 12000，用于开发测试").payload.model_dump()
     store = module.store
     tid = store.create(
         "browser", "test", "demo", {"digest": digest(payload), "approved": False}

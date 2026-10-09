@@ -7,7 +7,7 @@ from app.agent import demo_plan as browser_demo, digest
 
 
 def test_browser_plan_validation_and_digest():
-    plan = browser_demo("研发部采购 3 台电脑，预算 18000 元")
+    plan = browser_demo("研发部采购 3 台电脑，预算 18000 元，用于开发测试")
     assert plan.payload.quantity == 3
     assert plan.payload.budget == 18000
     payload = plan.payload.model_dump()
@@ -20,7 +20,7 @@ def test_browser_plan_validation_and_digest():
 def test_page_tool_and_semantic_dom():
     from app.browser import BrowserSession, fill_fields, verify_fields, observe
 
-    payload = browser_demo("研发部采购 3 台电脑，预算 18000 元").payload.model_dump()
+    payload = browser_demo("研发部采购 3 台电脑，预算 18000 元，用于开发测试").payload.model_dump()
 
     async def scenario():
         async with BrowserSession() as session:

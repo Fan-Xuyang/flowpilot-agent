@@ -1,0 +1,4173 @@
+{
+  "scope": "采购字段规则抽取回归；不是浏览器端到端成功率或真实模型准确率。",
+  "suite_sha256": "c3e1bb4564913438d70ff151769161679c1c13510ca856b7829718696141ba1d",
+  "model": "none",
+  "results": {
+    "v1": {
+      "exact": 0,
+      "total": 100,
+      "field_correct": 290,
+      "field_total": 500,
+      "negative_rejected": 2,
+      "negative_total": 6,
+      "cases": [
+        {
+          "id": "B001",
+          "query": "为信息技术部申请 一 台笔记本电脑，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B002",
+          "query": "研发部采购1个笔记本电脑，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B003",
+          "query": "为综合管理部申请 1 台笔记本电脑，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B004",
+          "query": "信息技术部采购1个台式电脑，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B005",
+          "query": "为研发部申请 一 台台式电脑，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B006",
+          "query": "综合管理部采购1个台式电脑，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B007",
+          "query": "为信息技术部申请 1 台显示器，预算 1.8万 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B008",
+          "query": "研发部采购1个显示器，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B009",
+          "query": "为综合管理部申请 一 台显示器，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B010",
+          "query": "信息技术部采购1个打印机，预算上限1.2万元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B011",
+          "query": "为研发部申请 1 台打印机，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B012",
+          "query": "综合管理部采购1个打印机，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B013",
+          "query": "为信息技术部申请 一 台办公设备，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B014",
+          "query": "研发部采购1个办公设备，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B015",
+          "query": "为综合管理部申请 1 台办公设备，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B016",
+          "query": "信息技术部采购2个笔记本电脑，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B017",
+          "query": "为研发部申请 两 台笔记本电脑，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B018",
+          "query": "综合管理部采购2个笔记本电脑，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B019",
+          "query": "为信息技术部申请 2 台台式电脑，预算 1.8万 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B020",
+          "query": "研发部采购2个台式电脑，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B021",
+          "query": "为综合管理部申请 两 台台式电脑，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B022",
+          "query": "信息技术部采购2个显示器，预算上限1.2万元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B023",
+          "query": "为研发部申请 2 台显示器，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B024",
+          "query": "综合管理部采购2个显示器，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B025",
+          "query": "为信息技术部申请 两 台打印机，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B026",
+          "query": "研发部采购2个打印机，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B027",
+          "query": "为综合管理部申请 2 台打印机，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B028",
+          "query": "信息技术部采购2个办公设备，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B029",
+          "query": "为研发部申请 两 台办公设备，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B030",
+          "query": "综合管理部采购2个办公设备，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B031",
+          "query": "为信息技术部申请 3 台笔记本电脑，预算 1.8万 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B032",
+          "query": "研发部采购3个笔记本电脑，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B033",
+          "query": "为综合管理部申请 三 台笔记本电脑，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B034",
+          "query": "信息技术部采购3个台式电脑，预算上限1.2万元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B035",
+          "query": "为研发部申请 3 台台式电脑，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B036",
+          "query": "综合管理部采购3个台式电脑，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B037",
+          "query": "为信息技术部申请 三 台显示器，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B038",
+          "query": "研发部采购3个显示器，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B039",
+          "query": "为综合管理部申请 3 台显示器，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B040",
+          "query": "信息技术部采购3个打印机，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B041",
+          "query": "为研发部申请 三 台打印机，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B042",
+          "query": "综合管理部采购3个打印机，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B043",
+          "query": "为信息技术部申请 3 台办公设备，预算 1.8万 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B044",
+          "query": "研发部采购3个办公设备，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B045",
+          "query": "为综合管理部申请 三 台办公设备，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B046",
+          "query": "信息技术部采购5个笔记本电脑，预算上限1.2万元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B047",
+          "query": "为研发部申请 5 台笔记本电脑，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B048",
+          "query": "综合管理部采购5个笔记本电脑，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B049",
+          "query": "为信息技术部申请 五 台台式电脑，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B050",
+          "query": "研发部采购5个台式电脑，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B051",
+          "query": "为综合管理部申请 5 台台式电脑，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B052",
+          "query": "信息技术部采购5个显示器，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B053",
+          "query": "为研发部申请 五 台显示器，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B054",
+          "query": "综合管理部采购5个显示器，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B055",
+          "query": "为信息技术部申请 5 台打印机，预算 1.8万 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B056",
+          "query": "研发部采购5个打印机，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B057",
+          "query": "为综合管理部申请 五 台打印机，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B058",
+          "query": "信息技术部采购5个办公设备，预算上限1.2万元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B059",
+          "query": "为研发部申请 5 台办公设备，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B060",
+          "query": "综合管理部采购5个办公设备，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B061",
+          "query": "为信息技术部申请 十 台笔记本电脑，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B062",
+          "query": "研发部采购10个笔记本电脑，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B063",
+          "query": "为综合管理部申请 10 台笔记本电脑，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B064",
+          "query": "信息技术部采购10个台式电脑，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B065",
+          "query": "为研发部申请 十 台台式电脑，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B066",
+          "query": "综合管理部采购10个台式电脑，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B067",
+          "query": "为信息技术部申请 10 台显示器，预算 1.8万 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B068",
+          "query": "研发部采购10个显示器，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B069",
+          "query": "为综合管理部申请 十 台显示器，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B070",
+          "query": "信息技术部采购10个打印机，预算上限1.2万元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B071",
+          "query": "为研发部申请 10 台打印机，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B072",
+          "query": "综合管理部采购10个打印机，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B073",
+          "query": "为信息技术部申请 十 台办公设备，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B074",
+          "query": "研发部采购10个办公设备，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B075",
+          "query": "为综合管理部申请 10 台办公设备，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B076",
+          "query": "信息技术部采购1个笔记本电脑，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B077",
+          "query": "为研发部申请 一 台笔记本电脑，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B078",
+          "query": "综合管理部采购1个笔记本电脑，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B079",
+          "query": "为信息技术部申请 1 台台式电脑，预算 1.8万 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B080",
+          "query": "研发部采购1个台式电脑，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B081",
+          "query": "为综合管理部申请 一 台台式电脑，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B082",
+          "query": "信息技术部采购1个显示器，预算上限1.2万元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B083",
+          "query": "为研发部申请 1 台显示器，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B084",
+          "query": "综合管理部采购1个显示器，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B085",
+          "query": "为信息技术部申请 一 台打印机，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B086",
+          "query": "研发部采购1个打印机，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B087",
+          "query": "为综合管理部申请 1 台打印机，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B088",
+          "query": "信息技术部采购1个办公设备，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B089",
+          "query": "为研发部申请 一 台办公设备，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B090",
+          "query": "综合管理部采购1个办公设备，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B091",
+          "query": "为信息技术部申请 2 台笔记本电脑，预算 1.8万 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B092",
+          "query": "研发部采购2个笔记本电脑，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B093",
+          "query": "为综合管理部申请 两 台笔记本电脑，预算 8000 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B094",
+          "query": "信息技术部采购2个台式电脑，预算上限1.2万元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 1,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B095",
+          "query": "为研发部申请 2 台台式电脑，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B096",
+          "query": "综合管理部采购2个台式电脑，预算上限25000元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 3,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B097",
+          "query": "为信息技术部申请 两 台显示器，预算 0.8万 元，用于开发测试。",
+          "exact": false,
+          "correct_fields": 0,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": null,
+          "error": "1 validation error for Procurement\nbudget\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.14/v/greater_than_equal"
+        },
+        {
+          "id": "B098",
+          "query": "研发部采购2个显示器，预算上限12000元，用来日常办公。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B099",
+          "query": "为综合管理部申请 2 台显示器，预算 18000 元，用于项目演示。",
+          "exact": false,
+          "correct_fields": 4,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        },
+        {
+          "id": "B100",
+          "query": "信息技术部采购2个打印机，预算上限2.5万元，用来设备更新。",
+          "exact": false,
+          "correct_fields": 2,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 2,
+            "reason": "本地演示：用于开发与测试工作，请在确认前核对。"
+          },
+          "error": null
+        }
+      ]
+    },
+    "v2": {
+      "exact": 100,
+      "total": 100,
+      "field_correct": 500,
+      "field_total": 500,
+      "negative_rejected": 6,
+      "negative_total": 6,
+      "cases": [
+        {
+          "id": "B001",
+          "query": "为信息技术部申请 一 台笔记本电脑，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B002",
+          "query": "研发部采购1个笔记本电脑，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B003",
+          "query": "为综合管理部申请 1 台笔记本电脑，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B004",
+          "query": "信息技术部采购1个台式电脑，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B005",
+          "query": "为研发部申请 一 台台式电脑，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B006",
+          "query": "综合管理部采购1个台式电脑，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B007",
+          "query": "为信息技术部申请 1 台显示器，预算 1.8万 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B008",
+          "query": "研发部采购1个显示器，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B009",
+          "query": "为综合管理部申请 一 台显示器，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B010",
+          "query": "信息技术部采购1个打印机，预算上限1.2万元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B011",
+          "query": "为研发部申请 1 台打印机，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B012",
+          "query": "综合管理部采购1个打印机，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B013",
+          "query": "为信息技术部申请 一 台办公设备，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B014",
+          "query": "研发部采购1个办公设备，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B015",
+          "query": "为综合管理部申请 1 台办公设备，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B016",
+          "query": "信息技术部采购2个笔记本电脑，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B017",
+          "query": "为研发部申请 两 台笔记本电脑，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B018",
+          "query": "综合管理部采购2个笔记本电脑，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B019",
+          "query": "为信息技术部申请 2 台台式电脑，预算 1.8万 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B020",
+          "query": "研发部采购2个台式电脑，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B021",
+          "query": "为综合管理部申请 两 台台式电脑，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B022",
+          "query": "信息技术部采购2个显示器，预算上限1.2万元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B023",
+          "query": "为研发部申请 2 台显示器，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B024",
+          "query": "综合管理部采购2个显示器，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B025",
+          "query": "为信息技术部申请 两 台打印机，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B026",
+          "query": "研发部采购2个打印机，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B027",
+          "query": "为综合管理部申请 2 台打印机，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B028",
+          "query": "信息技术部采购2个办公设备，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B029",
+          "query": "为研发部申请 两 台办公设备，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B030",
+          "query": "综合管理部采购2个办公设备，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B031",
+          "query": "为信息技术部申请 3 台笔记本电脑，预算 1.8万 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B032",
+          "query": "研发部采购3个笔记本电脑，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B033",
+          "query": "为综合管理部申请 三 台笔记本电脑，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B034",
+          "query": "信息技术部采购3个台式电脑，预算上限1.2万元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B035",
+          "query": "为研发部申请 3 台台式电脑，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B036",
+          "query": "综合管理部采购3个台式电脑，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B037",
+          "query": "为信息技术部申请 三 台显示器，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B038",
+          "query": "研发部采购3个显示器，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B039",
+          "query": "为综合管理部申请 3 台显示器，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B040",
+          "query": "信息技术部采购3个打印机，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B041",
+          "query": "为研发部申请 三 台打印机，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B042",
+          "query": "综合管理部采购3个打印机，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 3,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B043",
+          "query": "为信息技术部申请 3 台办公设备，预算 1.8万 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B044",
+          "query": "研发部采购3个办公设备，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B045",
+          "query": "为综合管理部申请 三 台办公设备，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 3,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B046",
+          "query": "信息技术部采购5个笔记本电脑，预算上限1.2万元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B047",
+          "query": "为研发部申请 5 台笔记本电脑，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B048",
+          "query": "综合管理部采购5个笔记本电脑，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B049",
+          "query": "为信息技术部申请 五 台台式电脑，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B050",
+          "query": "研发部采购5个台式电脑，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B051",
+          "query": "为综合管理部申请 5 台台式电脑，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B052",
+          "query": "信息技术部采购5个显示器，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B053",
+          "query": "为研发部申请 五 台显示器，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B054",
+          "query": "综合管理部采购5个显示器，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B055",
+          "query": "为信息技术部申请 5 台打印机，预算 1.8万 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B056",
+          "query": "研发部采购5个打印机，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B057",
+          "query": "为综合管理部申请 五 台打印机，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 5,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B058",
+          "query": "信息技术部采购5个办公设备，预算上限1.2万元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B059",
+          "query": "为研发部申请 5 台办公设备，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B060",
+          "query": "综合管理部采购5个办公设备，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 5,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B061",
+          "query": "为信息技术部申请 十 台笔记本电脑，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B062",
+          "query": "研发部采购10个笔记本电脑，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B063",
+          "query": "为综合管理部申请 10 台笔记本电脑，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B064",
+          "query": "信息技术部采购10个台式电脑，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B065",
+          "query": "为研发部申请 十 台台式电脑，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B066",
+          "query": "综合管理部采购10个台式电脑，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B067",
+          "query": "为信息技术部申请 10 台显示器，预算 1.8万 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B068",
+          "query": "研发部采购10个显示器，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B069",
+          "query": "为综合管理部申请 十 台显示器，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B070",
+          "query": "信息技术部采购10个打印机，预算上限1.2万元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B071",
+          "query": "为研发部申请 10 台打印机，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B072",
+          "query": "综合管理部采购10个打印机，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 10,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B073",
+          "query": "为信息技术部申请 十 台办公设备，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B074",
+          "query": "研发部采购10个办公设备，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B075",
+          "query": "为综合管理部申请 10 台办公设备，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 10,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B076",
+          "query": "信息技术部采购1个笔记本电脑，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B077",
+          "query": "为研发部申请 一 台笔记本电脑，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B078",
+          "query": "综合管理部采购1个笔记本电脑，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B079",
+          "query": "为信息技术部申请 1 台台式电脑，预算 1.8万 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B080",
+          "query": "研发部采购1个台式电脑，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B081",
+          "query": "为综合管理部申请 一 台台式电脑，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B082",
+          "query": "信息技术部采购1个显示器，预算上限1.2万元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B083",
+          "query": "为研发部申请 1 台显示器，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B084",
+          "query": "综合管理部采购1个显示器，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B085",
+          "query": "为信息技术部申请 一 台打印机，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B086",
+          "query": "研发部采购1个打印机，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B087",
+          "query": "为综合管理部申请 1 台打印机，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "打印机",
+            "quantity": 1,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B088",
+          "query": "信息技术部采购1个办公设备，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B089",
+          "query": "为研发部申请 一 台办公设备，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B090",
+          "query": "综合管理部采购1个办公设备，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "办公设备",
+            "quantity": 1,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B091",
+          "query": "为信息技术部申请 2 台笔记本电脑，预算 1.8万 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B092",
+          "query": "研发部采购2个笔记本电脑，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B093",
+          "query": "为综合管理部申请 两 台笔记本电脑，预算 8000 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "笔记本电脑",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B094",
+          "query": "信息技术部采购2个台式电脑，预算上限1.2万元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B095",
+          "query": "为研发部申请 2 台台式电脑，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B096",
+          "query": "综合管理部采购2个台式电脑，预算上限25000元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "台式电脑",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        },
+        {
+          "id": "B097",
+          "query": "为信息技术部申请 两 台显示器，预算 0.8万 元，用于开发测试。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 8000,
+            "reason": "开发测试"
+          },
+          "error": null
+        },
+        {
+          "id": "B098",
+          "query": "研发部采购2个显示器，预算上限12000元，用来日常办公。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "actual": {
+            "department": "研发部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 12000,
+            "reason": "日常办公"
+          },
+          "error": null
+        },
+        {
+          "id": "B099",
+          "query": "为综合管理部申请 2 台显示器，预算 18000 元，用于项目演示。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "actual": {
+            "department": "综合管理部",
+            "item": "显示器",
+            "quantity": 2,
+            "budget": 18000,
+            "reason": "项目演示"
+          },
+          "error": null
+        },
+        {
+          "id": "B100",
+          "query": "信息技术部采购2个打印机，预算上限2.5万元，用来设备更新。",
+          "exact": true,
+          "correct_fields": 5,
+          "expected": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "actual": {
+            "department": "信息技术部",
+            "item": "打印机",
+            "quantity": 2,
+            "budget": 25000,
+            "reason": "设备更新"
+          },
+          "error": null
+        }
+      ]
+    }
+  }
+}

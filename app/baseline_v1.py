@@ -1,12 +1,12 @@
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 from shared.model import structured
 from .browser import BrowserSession, observe, fill_fields, verify_fields
-from .planning import offline_plan
 
 
 class Procurement(BaseModel):
@@ -32,7 +32,27 @@ def digest(payload):
 
 
 def demo_plan(query):
-    return BrowserPlan.model_validate(offline_plan(query))
+    number = re.search(r"(\d+)\s*(?:台|个)", query)
+    budget = re.search(r"(?:预算|上限)[^\d]{0,4}(\d+)", query)
+    department = next(
+        (d for d in ["研发部", "综合管理部", "信息技术部"] if d in query), "信息技术部"
+    )
+    item = (
+        "笔记本电脑"
+        if "电脑" in query
+        else ("显示器" if "显示器" in query else "办公设备")
+    )
+    return BrowserPlan(
+        goal="准备采购申请，确认后提交并校验回执",
+        payload=Procurement(
+            department=department,
+            item=item,
+            quantity=int(number.group(1)) if number else 2,
+            budget=int(budget.group(1)) if budget else 12000,
+            reason="本地演示：用于开发与测试工作，请在确认前核对。",
+        ),
+        route="semantic-dom" if "DOM" in query.upper() else "page-tool",
+    )
 
 
 class BrowserAgent:

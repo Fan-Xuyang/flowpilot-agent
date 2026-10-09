@@ -13,6 +13,13 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - run: python -m playwright install --with-deps chromium
       - run: python -m pytest tests -q
+      - run: python benchmarks/evaluate.py
+      - run: python benchmarks/engineering.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evaluation-results
+          path: benchmarks/*results.json
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
