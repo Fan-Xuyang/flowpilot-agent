@@ -1,0 +1,23 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>采购申请演示门户</title><style>
+body{font:16px system-ui;background:#f3f5f8;color:#172238;margin:0;padding:35px}main{max-width:700px;margin:auto;background:white;border-radius:15px;padding:35px}h1{margin:0 0 10px}p{color:#697587;line-height:1.7}label{display:block;margin:20px 0 6px}input,select,textarea{box-sizing:border-box;width:100%;padding:12px;border:1px solid #cad1dc;border-radius:7px;font:inherit}button{margin-top:24px;background:#155eef;color:white;border:0;border-radius:7px;padding:12px 22px;font:inherit;cursor:pointer}output{display:block;background:#edf6ee;padding:16px;margin-top:18px;white-space:pre-wrap}.note{font-size:13px;color:#7c8796}
+</style></head><body><main><h1>采购申请</h1><p>本地合成业务门户。填写申请后等待工作台确认；不会产生真实采购或付款。</p><form id="request">
+<label for="department">申请部门</label><select id="department" name="department"><option>信息技术部</option><option>研发部</option><option>综合管理部</option></select>
+<label for="item">采购物品</label><input id="item" name="item" required maxlength="100">
+<label for="quantity">数量</label><input id="quantity" name="quantity" type="number" min="1" max="50" value="1" required>
+<label for="budget">预算上限（元）</label><input id="budget" name="budget" type="number" min="1" max="1000000" required>
+<label for="reason">申请用途</label><textarea id="reason" name="reason" required maxlength="300"></textarea>
+<button type="submit">提交采购申请</button></form><output id="receipt" hidden></output><p class="note" id="tools">正在检查页面工具能力…</p></main>
+<script>
+const form=document.getElementById('request');
+const fields=['department','item','quantity','budget','reason'];
+const current=()=>Object.fromEntries(fields.map(k=>[k,document.getElementById(k).value]));
+function prepare(args){for(const [k,v] of Object.entries(args)){if(!fields.includes(k))throw Error('未知字段');document.getElementById(k).value=String(v);document.getElementById(k).dispatchEvent(new Event('change',{bubbles:true}));}return {prepared:current(),submitted:false};}
+const tool={name:'prepare_procurement',description:'填写采购申请但不提交，需要用户在工作台确认。',inputSchema:{type:'object',properties:{department:{type:'string',enum:['信息技术部','研发部','综合管理部']},item:{type:'string'},quantity:{type:'integer',minimum:1,maximum:50},budget:{type:'number',minimum:1,maximum:1000000},reason:{type:'string'}},required:fields,additionalProperties:false},execute:prepare};
+// This local adapter shares exactly the registered implementation; it is not an MCP protocol shim.
+window.localPageTools={catalog:[{name:tool.name,description:tool.description,inputSchema:tool.inputSchema}],call:(name,args)=>{if(name!==tool.name)throw Error('工具不可用');return prepare(args);},nativeRegistered:false};
+const modelContext=document.modelContext||navigator.modelContext;
+if(modelContext?.registerTool){try{modelContext.registerTool(tool);window.localPageTools.nativeRegistered=true;}catch(e){console.warn(e);}}
+document.getElementById('tools').textContent=window.localPageTools.nativeRegistered?'WebMCP 原生工具已注册；支持页面工具与 DOM 两种执行路径':'当前浏览器未启用 WebMCP；本地页面工具适配器可用，也可回退语义 DOM';
+window.readProcurement=current;
+form.addEventListener('submit',async e=>{e.preventDefault();const taskId=new URLSearchParams(location.search).get('task');const result=await fetch('/portal/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({task_id:taskId,...current()})});const body=await result.json();const output=document.getElementById('receipt');output.hidden=false;output.textContent=result.ok?JSON.stringify(body):'提交失败：'+body.detail;if(result.ok)window.procurementReceipt=body;});
+</script></body></html>

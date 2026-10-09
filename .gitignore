@@ -1,0 +1,11 @@
+.venv/
+node_modules/
+data/
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+frontend/dist/
+*.sqlite3*
+*.duckdb*
