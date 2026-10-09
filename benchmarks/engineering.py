@@ -14,7 +14,7 @@ import httpx
 from contextlib import closing
 
 ROOT = Path(__file__).resolve().parents[1]
-IS_BROWSER = ROOT.name == 'flow-pilot'
+IS_BROWSER = (ROOT/'app/portal.html').is_file()
 PORT = 8302 if IS_BROWSER else 8301
 BASE = f'http://127.0.0.1:{PORT}'
 
