@@ -1,6 +1,8 @@
 # FlowPilot 采购申请自动填报 Agent
 
-个人独立设计与搭建的 AI 全栈应用：把自然语言采购任务转换为可检查的页面填写，暂停等待用户确认，再提交到自建演示门户并验证回执。使用 React / TypeScript、FastAPI、Playwright、Pydantic、SQLite、SSE 与实验性 WebMCP 页面工具注册。
+面向材料行业采购协同场景设计并获业务方采纳的 AI 全栈应用：把自然语言采购任务转换为可检查的页面填写，暂停等待用户确认，再提交并验证回执。应用由个人独立设计搭建，使用 React / TypeScript、FastAPI、Playwright、Pydantic、SQLite、SSE 与实验性 WebMCP 页面工具注册。
+
+本公开仓库是可复现的演示与工程验证版本，使用合成申请数据和自建门户，不含企业业务数据、凭据或生产配置。固定规则测试验证字段抽取与执行流程，不代表真实模型准确率或企业线上指标。
 
 ![FlowPilot 工作台](docs/screenshots/desktop.png)
 
@@ -48,7 +50,7 @@ powershell -ExecutionPolicy Bypass -File .\start.ps1
 
 应用仅供本地单用户作品展示，没有生产鉴权；示例数据与门户均为合成内容。密钥、数据库、依赖目录不提交 Git。模型返回内容一律经过结构化校验，仍需用户核对业务含义。
 
-实现与面试讨论见 [工程说明](docs/INTERVIEW.md)。
+实现与面试讨论见 [工程说明](docs/INTERVIEW.md)，简历项目表述见 [项目描述](docs/简历项目描述.md)。
 
 ## 设计参考
 
